@@ -1,14 +1,17 @@
 ### Downloading mutation and CNV matrices from the bioportal 
 
-`genes.txt` is a file containing the list of gene of interest. The gene names should be in the first column of the file. The file should be newline-delimited. 
+Running the `get_mut_matrix.ipynb` script will download the mutation matrix for the cancers of interest (provided in the `cancers.txt` file). The mutation matrix will be saved as a csv file in the queried_data folder, sample_ids are the row labels, and gene names are the column labels. The value in the matrix are binary, 0 if no mutation, 1 if the gene is mutated in the sample. 
 
- - If the `gene_list` variable is not set to `True`, the script will download the mutation and CNV matrices for all genes in the bioportal.
+
+Running the `get_cnv_matrix.ipynb` script will download the discrete copy number alteration matrix for the cancers of interest (provided in the `cancers.txt` file). The mutation matrix will be saved as a csv file in the queried_data folder, sample_ids are the row labels, and gene names are the column labels. The values in the matrix are the alteration. 
+
 
 `cancers.txt` is a file containing the list of cancer types of interest. The cancer names should be in the first column of the file. The file should be newline-delimited.
 
-`get_mut_matrix.ipynb` will download the mutation matrix for the genes and cancers of interest. The mutation matrix will be saved as a csv file in the queried_data folder.
 
-`get_cnv_matrix.ipynb` will download the CNV matrix for the genes and cancers of interest. The CNV matrix will be saved as a csv file in the queried_data folder.
+`genes.txt` is a file containing the list of gene of interest. The gene names should be in the first column of the file. The file should be newline-delimited. 
+
+ - If the `gene_list` variable is not set to `True`, the script will download the mutation and CNV matrices for all genes in the bioportal.
 
 
 ### Matching the queried data with the metadata for the slides
