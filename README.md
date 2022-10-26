@@ -27,7 +27,7 @@ By default, data for all 32 cancers listed in `cancers.txt` will be downloaded.
 
 
 
-> #### Mutation Data 
+### Mutation Data 
 
 How to download mutation data for all cancers and all genes:
 
@@ -58,7 +58,7 @@ python3 get_mut_matrix.py -c path/to/cancer_list.txt -g -o
 
 
 
-> #### CNA Data 
+### CNA Data 
 
 How to download CNA data for all cancers and all genes:
 
