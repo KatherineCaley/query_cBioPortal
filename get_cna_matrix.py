@@ -1,7 +1,6 @@
 import os
 from bravado.client import SwaggerClient
 import pandas as pd
-from progressbar import ProgressBar
 import click
 
 from utils import get_cnas, cnas_to_df, get_sample_ids
@@ -92,7 +91,7 @@ def main(gene_list, cancer_list, overwrite):
 
         cna_df = cnas_to_df(cnas, genes, df)
 
-        cna_df.to_csv(f"queried_data/cna_matrices/{cancer}_cna_matrix.csv")
+        cna_df.to_csv(f"queried_data/cna_matrices/{cancer}.csv")
 
 
 if __name__ == "__main__":

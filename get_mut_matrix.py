@@ -84,7 +84,7 @@ def main(gene_list, cancer_list, overwrite):
 
         mutation_df = muts_to_df(muts, genes, df)
 
-        mutation_df.to_csv(f"queried_data/mutation_matrices/{cancer}_mut_matrix.csv")
+        mutation_df.to_csv(f"queried_data/mutation_matrices/{cancer}.csv")
 
 
 if __name__ == "__main__":

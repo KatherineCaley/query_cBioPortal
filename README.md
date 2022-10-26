@@ -19,7 +19,7 @@ pip install click
 
 
 
-#### Downloading the data 
+### Downloading the data 
 
 There are two main scripts, `get_mut_matrix.py` and `get_cna_matrix.py` which download the mutation and CNA data respectively. 
 
@@ -42,7 +42,7 @@ To download mutation data for *certain cancers*, create a .txt file of the cance
 python3 get_mut_matrix.py -c path/to/cancer_list.txt
 ```
 
-To only download mutation data for *certain genes*, create a .txt file in the `genes` directory, following the exact naming convention `{cancer}_mut.txt`, for example, for BRCA, it would be called `brca_mut.txt` **and ** add the -g flag
+To only download mutation data for *certain genes*, create a .txt file in the `genes` directory, following the exact naming convention `{cancer}_mut.txt`, for example, for BRCA, it would be called `brca_mut.txt` **and** add the -g flag
 
 ```shell
 python3 get_mut_matrix.py -c path/to/cancer_list.txt -g
@@ -73,7 +73,7 @@ To download CNA data for *certain cancers*, create a .txt file of the cancers of
 python3 get_cna_matrix.py -c path/to/cancer_list.txt
 ```
 
-To only download CNA data for *certain genes*, create a .txt file in the `genes` directory, following the exact naming convention `{cancer}_cna.txt`, for example, for BRCA, it would be called `brca_cna.txt` **and ** add the -g flag
+To only download CNA data for *certain genes*, create a .txt file in the `genes` directory, following the exact naming convention `{cancer}_cna.txt`, for example, for BRCA, it would be called `brca_cna.txt` **and** add the -g flag
 
 ```shell
 python3 get_cna_matrix.py -c path/to/cancer_list.txt -g
@@ -84,6 +84,10 @@ To overwrite a previously downloaded file, add the -o flag
 ```shell 
 python3 get_cna_matrix.py -c path/to/cancer_list.txt -g -o 
 ```
+
+
+### Matching mutation data to other data 
+
 
 
 
