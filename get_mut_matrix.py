@@ -1,7 +1,6 @@
 import os
 from bravado.client import SwaggerClient
 import pandas as pd
-from progressbar import ProgressBar
 import click
 
 from utils import get_muts, muts_to_df, get_sample_ids
