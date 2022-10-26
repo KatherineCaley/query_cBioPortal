@@ -1,23 +1,91 @@
-### Downloading mutation and CNV matrices from the bioportal 
+### Command line interface for downloading Mutation and Copy Number Alteration (CNA) data from the cBioPortal
 
-Running the `get_mut_matrix.ipynb` script will download the mutation matrix for the cancers of interest (provided in the `cancers.txt` file). The mutation matrix will be saved as a csv file in the queried_data folder, sample_ids are the row labels, and gene names are the column labels. The value in the matrix are binary, 0 if no mutation, 1 if the gene is mutated in the sample. 
+ https://www.cbioportal.org/
+
+#### Downloading `query_cBioPortal`
+
+```shell
+git clone https://github.com/KatherineCaley/query_cBioPortal.git
+```
+
+Install project dependencies 
+
+```shell
+pip install pandas 
+pip install bravado
+pip install progressbar
+pip install click
+```
 
 
-Running the `get_cnv_matrix.ipynb` script will download the discrete copy number alteration matrix for the cancers of interest (provided in the `cancers.txt` file). The mutation matrix will be saved as a csv file in the queried_data folder, sample_ids are the row labels, and gene names are the column labels. The values in the matrix are the alteration. 
+
+#### Downloading the data 
+
+There are two main scripts, `get_mut_matrix.py` and `get_cna_matrix.py` which download the mutation and CNA data respectively. 
+
+By default, data for all 32 cancers listed in `cancers.txt` will be downloaded. 
 
 
-`cancers.txt` is a file containing the list of cancer types of interest. The cancer names should be in the first column of the file. The file should be newline-delimited.
+
+> #### Mutation Data 
+
+How to download mutation data for all cancers and all genes:
+
+```shell
+cd query_cbioportal
+python3 get_mut_matrix.py
+```
+
+To download mutation data for *certain cancers*, create a .txt file of the cancers of interest (must be in TCGA abbreviation), and provide the path to that file following the -c flag
+
+```shell
+python3 get_mut_matrix.py -c path/to/cancer_list.txt
+```
+
+To only download mutation data for *certain genes*, create a .txt file in the `genes` directory, following the exact naming convention `{cancer}_mut.txt`, for example, for BRCA, it would be called `brca_mut.txt` **and ** add the -g flag
+
+```shell
+python3 get_mut_matrix.py -c path/to/cancer_list.txt -g
+```
+
+To overwrite a previously downloaded file, add the -o flag
+
+```shell 
+python3 get_mut_matrix.py -c path/to/cancer_list.txt -g -o 
+```
 
 
-`genes.txt` is a file containing the list of gene of interest. The gene names should be in the first column of the file. The file should be newline-delimited. 
-
- - If the `gene_list` variable is not set to `True`, the script will download the mutation and CNV matrices for all genes in the bioportal.
 
 
-### Matching the queried data with the metadata for the slides
+
+> #### CNA Data 
+
+How to download CNA data for all cancers and all genes:
+
+```shell
+cd query_cbioportal
+python3 get_cna_matrix.py
+```
+
+To download CNA data for *certain cancers*, create a .txt file of the cancers of interest (must be in TCGA abbreviation and seperate by the newline character), and provide the path to that file following the -c flag
+
+```shell
+python3 get_cna_matrix.py -c path/to/cancer_list.txt
+```
+
+To only download CNA data for *certain genes*, create a .txt file in the `genes` directory, following the exact naming convention `{cancer}_cna.txt`, for example, for BRCA, it would be called `brca_cna.txt` **and ** add the -g flag
+
+```shell
+python3 get_cna_matrix.py -c path/to/cancer_list.txt -g
+```
+
+To overwrite a previously downloaded file, add the -o flag
+
+```shell 
+python3 get_cna_matrix.py -c path/to/cancer_list.txt -g -o 
+```
 
 
-`match_TCGA_slide_rna` is a directory containing dataframes that match the location of TCGA slides to the metadata. For each file in this directory, which corresponds to a different cancer, the code will query the bioportal for the corresponding mutation and CNV data.
 
-The naming convention for the files in match_TCGA_slide_rna is: <cancer type>_slide_matched.csv, this is important and used to match to the queried mutation and CNV data.
+
 
